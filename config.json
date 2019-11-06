@@ -1,4 +1,4 @@
-{
+{ 
    "inbounds":[
     {
       "port": 16823,
@@ -12,7 +12,7 @@
         ]
       },
       "streamSettings": {
-        "network": "mkcp",
+        "network": "mkcp", 
         "kcpSettings": {
           "uplinkCapacity": 20,
           "downlinkCapacity": 100,
@@ -29,7 +29,7 @@
       "protocol": "freedom",
       "settings": {}
     },
-        {
+    {
       "protocol": "blackhole",
       "settings": {},
       "tag": "block"
@@ -41,17 +41,18 @@
       {
         "type": "field",
         "outboundTag": "block",
+        "domain": [
+            "ext:h2y.dat:ad"
+        ]
+    },
+  {
+        "type": "field",
+        "outboundTag": "block",
         "protocol": [
           "bittorrent"
         ]
-      },
-{
-     "type": "field",
-     "outboundTag": "block", 
-     "domain": [
-         "ext:h2y.dat:ad"
-     ]
- }
+      }
     ]
   }
+}
 }

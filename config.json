@@ -20,7 +20,12 @@
           "header": {
             "type": "wechat-video"
           }
-        }
+        },
+         "tcpsettings":{
+     "header": {
+    "type": "none"
+  }
+}
       }
     }
   ],

@@ -23,7 +23,7 @@
           "downlinkCapacity": 100,
           "congestion": true,
           "header": {
-            "type": "wechat-video"
+            "type": "utp"
           }
         },
          "tcpsettings":{

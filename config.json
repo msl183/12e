@@ -17,13 +17,13 @@
         ]
       },
       "streamSettings": {
-        "network": "kcp", 
+        "network": "tcp", 
         "kcpSettings": {
           "uplinkCapacity": 20,
           "downlinkCapacity": 100,
           "congestion": true,
           "header": {
-            "type": "wechat-video"
+            "type": "utp"
           }
         },
          "tcpsettings":{

@@ -18,7 +18,7 @@
       },
       "streamSettings": {
       "security": "none",
-  "tlsSettings": {}
+  "tlsSettings": {}，
          "network": "tcp", 
         "kcpSettings": {
           "uplinkCapacity": 20,

@@ -17,10 +17,10 @@
         ]
       },
       "streamSettings": {
-      "security": "none",
-  "tlsSettings": {},
+         "security": "none",
+         "tlsSettings": {},
          "network": "tcp", 
-        "kcpSettings": {
+         "kcpSettings": {
           "uplinkCapacity": 20,
           "downlinkCapacity": 100,
           "congestion": true,
@@ -28,7 +28,7 @@
             "type": "utp"
           }
         },
-        "wsSettings": {"path": "/ray"}, 
+         "wsSettings": {"path": "/ray"}, 
          "tcpsettings":{
      "header": {
     "type": "none"

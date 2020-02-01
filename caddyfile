@@ -1,0 +1,8 @@
+msl183.site{
+    log ./caddy.log
+    root /var/www
+    proxy /ray localhost:16823 {
+    websocket
+    header_upstream -Origin
+      }
+}

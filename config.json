@@ -6,7 +6,7 @@
 },
    "inbounds":[
     {
-      "port": 16823,
+      "port": 443,
       "protocol": "vmess",
       "settings": {
         "clients": [
@@ -20,9 +20,9 @@
          "security": "none",
          "tlsSettings": {"certificateFile": "/etc/v2ray/v2ray.crt",
                          "keyFile": "/etc/v2ray/v2ray.key"},
-         "httpSettings": { //此项是关于 HTTP/2 的设置
-          "path": "/ray"
-         "network": "tcp", 
+         "httpSettings": { 
+          "path": "/ray"},
+         "network": "h2", 
          "kcpSettings": {
           "uplinkCapacity": 20,
           "downlinkCapacity": 100,

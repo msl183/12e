@@ -18,7 +18,10 @@
       },
       "streamSettings": {
          "security": "none",
-         "tlsSettings": {},
+         "tlsSettings": {"certificateFile": "/etc/v2ray/v2ray.crt",
+                         "keyFile": "/etc/v2ray/v2ray.key"},
+         "httpSettings": { //此项是关于 HTTP/2 的设置
+          "path": "/ray"
          "network": "tcp", 
          "kcpSettings": {
           "uplinkCapacity": 20,

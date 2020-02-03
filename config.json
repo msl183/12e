@@ -6,7 +6,7 @@
 },
    "inbounds":[
     {
-      "port": 16823,
+      "port": 16824,
       "protocol": "vmess",
       "settings": {
         "clients": [
@@ -23,7 +23,7 @@
          "httpSettings": { 
                "host": ["msl183.site"],
 	      "path": "/ray"},
-         "network": "h2", 
+         "network": "tcp", 
          "kcpSettings": {
           "uplinkCapacity": 20,
           "downlinkCapacity": 100,

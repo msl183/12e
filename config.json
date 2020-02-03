@@ -55,14 +55,7 @@
   "routing": {
     "domainStrategy": "AsIs",
     "rules": [
-      {
-        "type": "field",
-        "outboundTag": "block",
-        "domain": [
-            "ext:h2y.dat:ad"
-        ]
-    },
-  {
+        {
         "type": "field",
         "outboundTag": "block",
         "protocol": [

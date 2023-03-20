@@ -80,8 +80,9 @@ proxies:
     network: ws
     tls: true
     udp: true
-    header:
-      - path: /marson
+    servername: msl185.xyz
+    ws-opts:
+      - path: "/marson"
       - host: msl185.xyz
 
  

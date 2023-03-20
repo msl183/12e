@@ -83,7 +83,8 @@ proxies:
     servername: msl185.xyz
     ws-opts:
       path: "/marson"
-      host: msl185.xyz
+      headers:
+        host: msl185.xyz
 
  
 

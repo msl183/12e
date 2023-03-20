@@ -82,8 +82,8 @@ proxies:
     udp: true
     servername: msl185.xyz
     ws-opts:
-      - path: "/marson"
-      - host: msl185.xyz
+    path: "/marson"
+    host: msl185.xyz
 
  
 

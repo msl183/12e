@@ -98,8 +98,8 @@ proxy-groups:
 
 rules:
   - GEOSITE,category-ads-all,REJECT
-  -IP-CIDR,127.0.0.0/8,DIRECT
   - AND,((OR,((DOMAIN-KEYWORD,pinduoduo),(DOMAIN-KEYWORD,pdd))),(OR,((DOMAIN-KEYWORD,live),(DOMAIN-KEYWORD,video),(DOMAIN-KEYWORD,mt)))),REJECT
+  - GEOSITE,google-cn,DIRECT
   - GEOSITE,category-games@cn,DIRECT
   - GEOSITE,geolocation-!cn,PROXY
   - GEOSITE,telegram,PROXY

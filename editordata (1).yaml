@@ -70,7 +70,7 @@ proxies:
     udp: true
     flow: xtls-rprx-vision
     servername: 
-    client-fingerprint: qq
+    client-fingerprint: safari
 
   - name: "ws"
     type: vless
@@ -98,6 +98,7 @@ proxy-groups:
 
 rules:
   - GEOSITE,category-ads-all,REJECT
+  - IP-CIDR,114.232.92.41,REJECT,no-resolve
   - AND,((OR,((DOMAIN-KEYWORD,pinduoduo),(DOMAIN-KEYWORD,pdd))),(OR,((DOMAIN-KEYWORD,live),(DOMAIN-KEYWORD,video),(DOMAIN-KEYWORD,mt)))),REJECT
   - GEOSITE,google-cn,DIRECT
   - GEOSITE,category-games@cn,DIRECT

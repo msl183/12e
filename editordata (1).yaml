@@ -70,7 +70,7 @@ proxies:
     udp: true
     flow: xtls-rprx-vision
     servername: 
-    client-fingerprint: qq
+    client-fingerprint: safari
 
   - name: "ws"
     type: vless

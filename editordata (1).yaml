@@ -90,9 +90,10 @@ proxies:
     port: 433
     uuid: ab54f3fc-192d-4d2f-97fd-1a9dfe230ba7
     network: tcp
+    flow: xtls-rprx-vision
     tls: true
     udp: true
-    servername: 42rj.com
+    servername: wap.js.10086.cn
     reality-opts:
       public-key: txaEQ_ew-jUx7tSHhqPlmJ2zb18yWyRdPNvwWA2QuBc
       short-id: 129d # optional

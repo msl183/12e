@@ -116,6 +116,7 @@ rules:
   - GEOSITE,category-ads-all,REJECT
   - AND,((DOMAIN-KEYWORD,pinduoduo),(DOMAIN-KEYWORD,pmmtk)),REJECT
   - GEOSITE,category-games@cn,DIRECT
+  - DOMAIN-KEYWORD,lra8j.com,DIRECT
   - GEOSITE,geolocation-!cn,PROXY
   - GEOSITE,telegram,PROXY
   - GEOSITE,cn,DIRECT

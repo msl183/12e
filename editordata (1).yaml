@@ -86,7 +86,7 @@ proxies:
 
   - name: "reality"
     type: vless
-    server: 66.112.221.69
+    server: 104.194.72.128
     port: 443
     uuid: ab54f3fc-192d-4d2f-97fd-1a9dfe230ba7
     network: tcp

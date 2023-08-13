@@ -93,7 +93,7 @@ proxies:
     flow: xtls-rprx-vision
     tls: true
     udp: true
-    servername: wap.js.10086.cn
+    servername: images.apple.com
     reality-opts:
       public-key: txaEQ_ew-jUx7tSHhqPlmJ2zb18yWyRdPNvwWA2QuBc
       short-id: 129d # optional

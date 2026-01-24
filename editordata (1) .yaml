@@ -82,13 +82,7 @@ proxies:
 
  
 
-proxy-groups:
-  - name: PROXY
-    type: select
-    proxies:
-      - "reality"
-     # - "Vision"
-     #  - "ws"
+
      
       
 

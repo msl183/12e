@@ -54,7 +54,8 @@
             },
             {
                 "action": "route",
-                "rule_set": "geosite-geolocation-!cn",
+                "no_resolve": true,
+                "rule_set": ["geosite-geolocation-!cn","geoip-telegram"],
                 "domain_keyword": [
                     "emby"
                 ],
@@ -62,6 +63,7 @@
             },
             {
                 "action": "route",
+                "no_resolve": true,
                 "rule_set": "geoip-cn",
                 "outbound": "direct"
             },
@@ -118,6 +120,13 @@
                 "type": "remote",
                 "format": "binary",
                 "url": "https://raw.githubusercontent.com/SagerNet/sing-geoip/rule-set/geoip-cn.srs",
+                "download_detour": "proxy"
+            },
+            {
+                "tag": "geoip-telegram",
+                "type": "remote",
+                "format": "binary",
+                "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geoip/telegram.srs",
                 "download_detour": "proxy"
             },
             {

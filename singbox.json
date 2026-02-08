@@ -3,9 +3,8 @@
         //直连
         {
             "tag": "direct",
-            "type": "direct",
-            "domain_resolver": "local"
-        },
+            "type": "direct"
+                    },
         //代理
         {
             "type": "vless",

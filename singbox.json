@@ -54,7 +54,7 @@
             },
             {
                 "action": "route",
-                "no_resolve": true,
+              
                 "rule_set": ["geosite-geolocation-!cn","geoip-telegram"],
                 "domain_keyword": [
                     "emby"
@@ -63,7 +63,7 @@
             },
             {
                 "action": "route",
-                "no_resolve": true,
+               
                 "rule_set": "geoip-cn",
                 "outbound": "direct"
             },

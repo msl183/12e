@@ -136,8 +136,7 @@
                 ],
                 "outbound": "direct"
             },
-             {
-               
+             {      
                 "rule_set": "geoip-cn",
                 "invert": true
                 "outbound": "proxy"

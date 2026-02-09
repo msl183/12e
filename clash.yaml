@@ -1,0 +1,130 @@
+
+#mixed-port: 7890  # HTTP 代理端口
+#allow-lan: false  # 不允许局域网访问；如需要局域网访问，设置为 true
+#bind-address: '*'  # 绑定所有网络接口（如需指定接口，修改为具体地址）
+#tcp-concurrent: true  # 允许多个并发的 TCP 连接
+#find-process-mode: strict  # 严格模式匹配进程
+
+# Geo 和 DNS 配置
+geox-url:
+  geoip: "https://fastly.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/geoip.dat"
+  geosite: "https://fastly.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/geosite.dat"
+  mmdb: "https://fastly.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/geoip.metadb"
+
+
+geo-auto-update: true  # 是否自动更新 geodata
+geo-update-interval: 24 # 更新间隔，单位：小时
+
+log-level: 'info'  # 日志级别
+ipv6: true  # 启用 IPv6 支持
+
+# DNS 配置
+dns:
+  enable: true
+  cache-algorithm: arc
+  prefer-h3: false  # 不优先使用 HTTP/3 进行 DNS 查询
+  listen: '0.0.0.0:53'  # DNS 监听地址
+  default-nameserver:
+    - '223.5.5.5'
+    - '8.8.8.8'
+    - '114.114.114.114'
+    - system
+  enhanced-mode: fake-ip  # 使用 fake-ip 模式
+  fake-ip-range: '198.10.0.1/16'  # fake-ip 范围
+# 配置不使用 fake-ip 的域名
+  fake-ip-filter:
+    - '*.lan'
+    - '+.local'
+    - localhost.ptlogin2.qq.com
+    - '*.msftconnecttest.com'
+    - '*.msftncsi.com'
+    - 'msftconnecttest.com'
+    - 'msftncsi.com'
+    - 'connectivitycheck.gstatic.com'
+    - 'connectivitycheck.platform.hicloud.com' # 华为
+    - 'detectportal.firefox.com'
+    - 'stun.*.*'
+    - 'stun.*.*.*'
+    - '+.stun.*'
+    - '+.stun.*.*'
+    - '+.stun.*.*.*'
+   # 4. 特殊应用兼容（如网易云音乐、阿里云盘等在某些情况下需要真实 IP）
+    - '+.music.163.com'
+    - '*.music.126.net'
+    - 'api.p001.nci.163.net'
+    # 5. NTP 时间同步服务
+    - 'pool.ntp.org'
+    - 'ntp*.aliyun.com'
+    - 'time*.apple.com'
+    - 'time*.google.com'
+
+  nameserver:
+    - system
+    - 114.114.114.114 # default value
+    - 8.8.8.8#PROXY #default value
+    - tls://223.5.5.5:853 # DNS over TLS
+    - https://doh.pub/dns-query # DNS over HTTPS  
+
+  nameserver-policy:
+    # 所有的国内网站域名（geosite:cn）强制使用国内 DNS
+    'geosite:cn': [system, https://doh.pub/dns-query]
+    'geosite:geolocation-!cn':
+      - 1.1.1.1#PROXY
+      - 8.8.8.8#PROXY
+ # fallback 触发条件：当解析结果符合以下条件时，采用 fallback 的结果 
+  fallback:
+    - 8.8.8.8#PROXY
+    - https://dns.google/dns-query#proxy
+    - https://1.1.1.1/dns-query
+    - tls://8.8.4.4
+
+    # fallback 触发条件：当解析结果符合以下条件时，采用 fallback 的结果
+  fallback-filter:
+    geoip: true          # 如果解析出的 IP 非中国区（GEOIP, CN），则使用 fallback 的结果
+    geoip-code: CN
+    geosite:             # 如果域名在这些列表里，直接使用 fallback 解析
+      - gfw
+    ipcidr:              # 污染 IP 段过滤
+      - 240.0.0.0/4
+  
+
+
+# 代理配置
+proxies:
+  - name: 'reality'
+    type: 'vless'
+    server: '104.194.72.128'
+    port: 443
+    uuid: 'ab54f3fc-192d-4d2f-97fd-1a9dfe230ba7'
+    network: 'tcp'
+    flow: 'xtls-rprx-vision'
+    tls: true
+    udp: true
+    servername: 'images.apple.com'
+    reality-opts:
+      public-key: 'txaEQ_ew-jUx7tSHhqPlmJ2zb18yWyRdPNvwWA2QuBc'
+      short-id: '129d'
+    client-fingerprint: 'chrome'
+
+# 代理组配置
+proxy-groups:
+  - name: 'PROXY'
+    type: 'select'
+    proxies:
+      - 'reality'
+
+# 规则配置
+rules:
+  - 'GEOIP,private,DIRECT,no-resolve'  # 内网私有地址直接访问
+  - 'GEOSITE,category-ads-all,REJECT'  # 拒绝广告
+  - 'AND,((DOMAIN-KEYWORD,pinduoduo),(DOMAIN-KEYWORD,pmmtk)),REJECT'  # 拒绝特定关键字域名
+  - 'GEOSITE,geolocation-!cn,PROXY'  # 非中国地区代理访问
+  - 'GEOSITE,telegram,PROXY'  # Telegram 使用代理
+  - GEOIP,telegram,PROXY,no-resolve
+  - 'GEOSITE,category-games@cn,DIRECT'  # 中国游戏类网站直接访问
+  - 'DOMAIN-KEYWORD,lra8j.com,DIRECT'  # 特定域名直接访问
+  
+  - 'GEOSITE,cn,DIRECT'  # 中国地区网站直接访问
+  - 'GEOSITE,private,DIRECT'  # 私有网络直接访问
+  - 'GEOIP,cn,DIRECT,no-resolve'  # 中国 IP 直接访问
+  - 'MATCH,DIRECT'  # 默认所有其他流量

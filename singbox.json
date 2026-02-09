@@ -109,7 +109,9 @@
             },
             {
                 "action": "route",
-                "rule_set": ["geosite-geolocation-!cn","geoip-telegram"],
+                "rule_set": [
+                    "geosite-geolocation-!cn",
+                    "geoip-telegram"],
                 "domain_keyword": [
                     "emby"
                 ],

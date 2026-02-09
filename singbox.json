@@ -137,7 +137,7 @@
                 "outbound": "direct"
             },
              {
-                "action": "route",
+               
                 "rule_set": "geoip-cn",
                 "invert": true
                 "outbound": "proxy"

@@ -22,7 +22,7 @@
         "strategy": "ipv4_only",
         "rules": [
             {
-                "rule_set": "ads",
+                "rule_set": "geosite-category-ads-all",
                 "action": "reject"
             },
             {
@@ -109,7 +109,6 @@
             },
             {
                 "action": "route",
-              
                 "rule_set": ["geosite-geolocation-!cn","geoip-telegram"],
                 "domain_keyword": [
                     "emby"
@@ -118,9 +117,9 @@
             },
             {
                 "action": "route",
-               
                 "rule_set": "geoip-cn",
-                "outbound": "direct"
+                "invert":true
+                "outbound": "proxy"
             },
             {
                 "action": "reject",

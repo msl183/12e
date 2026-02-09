@@ -1,4 +1,43 @@
 {
+    "dns": {
+        "servers": [
+            {
+                "tag": "google",
+                "type": "udp",
+                "server": "1.1.1.1",
+                "detour": "proxy"
+            },
+            {
+                "tag": "local",
+                "type": "local",
+                "detour": "direct"
+            },
+            {
+                "type": "fakeip",
+                "tag": "fakeip",
+                "inet4_range": "198.18.0.0/15"
+                //  "inet6_range": "fc00::/18"
+            }
+        ],
+        "strategy": "ipv4_only",
+        "rules": [
+            {
+                "rule_set": "ads",
+                "action": "reject"
+            },
+            {
+                "action": "route",
+                "rule_set": "geosite-geolocation-cn",
+                "server": "local"
+            },
+            {
+                "query_type": [
+                    "A"
+                ],
+                "server": "fakeip"
+            }
+        ]
+    },
     "inbounds": [
         {
             "type": "tun",

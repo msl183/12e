@@ -117,12 +117,7 @@
                 ],
                 "outbound": "proxy"
             },
-            {
-                "action": "route",
-                "rule_set": "geoip-cn",
-                "invert":true
-                "outbound": "proxy"
-            },
+           
             {
                 "action": "reject",
                 "rule_set": [
@@ -140,6 +135,12 @@
                     ".*[一-龥].*"
                 ],
                 "outbound": "direct"
+            },
+             {
+                "action": "route",
+                "rule_set": "geoip-cn",
+                "invert": true
+                "outbound": "proxy"
             },
             {
                 "action": "route",

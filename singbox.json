@@ -8,7 +8,7 @@
             {
                 "tag": "google",
                 "type": "udp",
-                "server": "1.1.1.1",
+                "server": [ "1.1.1.1", "8.8.8.8" ],
                 "detour": "proxy"
             },
             {

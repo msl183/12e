@@ -8,7 +8,7 @@
             {
                 "tag": "google",
                 "type": "udp",
-                "server": [ "1.1.1.1", "8.8.8.8" ],
+                "server":  "1.1.1.1",
                 "detour": "proxy"
             },
             {
@@ -42,19 +42,10 @@
         ]
     },
     "inbounds": [
-        {
-            "type": "tun",
-            "tag": "tun-in",
-            "interface_name": "tun0",
-            "address": [
-                "172.18.0.1/30"
-            ],
-            "auto_route": true,
-            "strict_route": false,
-            "stack": "mixed",
-            "sniff": true,
-            "sniff_override_destination": true
-        }
+       {
+  "type": "direct",
+  "tag": "direct-in"
+}
     ],
     "outbounds": [
         {
